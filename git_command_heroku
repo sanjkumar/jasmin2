@@ -1,0 +1,423 @@
+Last login: Wed Mar  5 18:16:50 on ttys000
+Sanjeevs-Mac:~ sanjeev$ cd nci
+Sanjeevs-Mac:nci sanjeev$ cd lab2
+Sanjeevs-Mac:lab2 sanjeev$ cd jasmin2
+Sanjeevs-Mac:jasmin2 sanjeev$ git add .
+warning: You ran 'git add' with neither '-A (--all)' or '--ignore-removal',
+whose behaviour will change in Git 2.0 with respect to paths you removed.
+Paths like 'SpecRunner.html' that are
+removed from your working tree are ignored with this version of Git.
+
+* 'git add --ignore-removal <pathspec>', which is the current default,
+  ignores paths you removed from your working tree.
+
+* 'git add --all <pathspec>' will let you also record the removals.
+
+Run 'git status' to check the paths you removed from your working tree.
+
+Sanjeevs-Mac:jasmin2 sanjeev$ git add . --ignore-removal
+Sanjeevs-Mac:jasmin2 sanjeev$ git commit -m "heroku ready"
+[master 17877ca] heroku ready
+ Committer: sanjkumar <sanjeev@Sanjeevs-Mac.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 11 files changed, 586 insertions(+), 154 deletions(-)
+ rewrite css/style-mobile.css (60%)
+ create mode 100644 css/style-narrower.css
+ rewrite css/style-wide.css (61%)
+ create mode 100644 home.html
+ create mode 100644 index.php
+ create mode 100644 js/config.js
+ create mode 100644 js/jquery.min.js
+ create mode 100644 js/skel-panels.min.js
+Sanjeevs-Mac:jasmin2 sanjeev$ git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Counting objects: 23, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (15/15), 42.12 KiB | 0 bytes/s, done.
+Total 15 (delta 4), reused 0 (delta 0)
+To git@github.com:sanjkumar/jasmin2.git
+   b7ba6c8..17877ca  master -> master
+Sanjeevs-Mac:jasmin2 sanjeev$ heroku create
+Enter your Heroku credentials.
+Email: sanj.judh@gmail.com
+Password (typing will be hidden): 
+Authentication failed.
+Enter your Heroku credentials.
+Email: sanj.judh@gmail.com
+Password (typing will be hidden): 
+Authentication failed.
+Enter your Heroku credentials.
+Email: sanj.judh@gmail.com
+Password (typing will be hidden): 
+Creating murmuring-depths-4689... done, stack is cedar
+http://murmuring-depths-4689.herokuapp.com/ | git@heroku.com:murmuring-depths-4689.git
+Git remote heroku added
+Sanjeevs-Mac:jasmin2 sanjeev$ heroku git:remote -a murmuring-depths-4689
+ !    Git remote heroku already exists
+Sanjeevs-Mac:jasmin2 sanjeev$ git push heroku master
+The authenticity of host 'heroku.com (50.19.85.132)' can't be established.
+RSA key fingerprint is 8b:48:5e:67:0e:c9:16:47:32:f2:87:0c:1f:c8:60:ad.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'heroku.com,50.19.85.132' (RSA) to the list of known hosts.
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Sanjeevs-Mac:jasmin2 sanjeev$ git add .
+warning: You ran 'git add' with neither '-A (--all)' or '--ignore-removal',
+whose behaviour will change in Git 2.0 with respect to paths you removed.
+Paths like 'SpecRunner.html' that are
+removed from your working tree are ignored with this version of Git.
+
+* 'git add --ignore-removal <pathspec>', which is the current default,
+  ignores paths you removed from your working tree.
+
+* 'git add --all <pathspec>' will let you also record the removals.
+
+Run 'git status' to check the paths you removed from your working tree.
+
+Sanjeevs-Mac:jasmin2 sanjeev$ git add . --ignore-removal
+Sanjeevs-Mac:jasmin2 sanjeev$ git commit -m "heroku check"
+# On branch master
+# Changes not staged for commit:
+#   (use "git add/rm <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	deleted:    SpecRunner.html
+#	deleted:    css/main.css
+#	deleted:    css/normalize.css
+#	deleted:    index.html
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+Sanjeevs-Mac:jasmin2 sanjeev$ git push heroku master
+Warning: Permanently added the RSA host key for IP address '50.19.85.154' to the list of known hosts.
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+Sanjeevs-Mac:jasmin2 sanjeev$ heroku keys:add ~/.ssh/id_rsa.pub
+Uploading SSH public key /Users/sanjeev/.ssh/id_rsa.pub... done
+Sanjeevs-Mac:jasmin2 sanjeev$ git push heroku master
+Warning: Permanently added the RSA host key for IP address '50.19.85.156' to the list of known hosts.
+Initializing repository, done.
+Counting objects: 84, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (75/75), done.
+Writing objects: 100% (84/84), 119.58 KiB | 0 bytes/s, done.
+Total 84 (delta 20), reused 6 (delta 0)
+
+-----> Removing .DS_Store files
+-----> PHP app detected
+-----> Bundling mcrypt version 2.5.8
+-----> Bundling Apache version 2.2.25
+-----> Bundling PHP version 5.3.27
+-----> Discovering process types
+       Procfile declares types -> (none)
+       Default types for PHP   -> web
+
+-----> Compressing... done, 22.3MB
+-----> Launching... done, v3
+       http://murmuring-depths-4689.herokuapp.com/ deployed to Heroku
+
+To git@heroku.com:murmuring-depths-4689.git
+ * [new branch]      master -> master
+Sanjeevs-Mac:jasmin2 sanjeev$ git add . --ignore-removal
+Sanjeevs-Mac:jasmin2 sanjeev$ git commit -m "heroku css"
+[master 8e07922] heroku css
+ Committer: sanjkumar <sanjeev@Sanjeevs-Mac.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+Sanjeevs-Mac:jasmin2 sanjeev$ git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 323 bytes | 0 bytes/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+To git@github.com:sanjkumar/jasmin2.git
+   17877ca..8e07922  master -> master
+Sanjeevs-Mac:jasmin2 sanjeev$ git push heroku master
+Fetching repository, done.
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 323 bytes | 0 bytes/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+
+-----> Removing .DS_Store files
+-----> PHP app detected
+-----> Bundling mcrypt version 2.5.8
+-----> Bundling Apache version 2.2.25
+-----> Bundling PHP version 5.3.27
+-----> Discovering process types
+       Procfile declares types -> (none)
+       Default types for PHP   -> web
+
+-----> Compressing... done, 22.3MB
+-----> Launching... done, v4
+       http://murmuring-depths-4689.herokuapp.com/ deployed to Heroku
+
+To git@heroku.com:murmuring-depths-4689.git
+   17877ca..8e07922  master -> master
+Sanjeevs-Mac:jasmin2 sanjeev$ git add . --ignore-removal
+Sanjeevs-Mac:jasmin2 sanjeev$ git commit -m "heroku style"
+[master 7337ea3] heroku style
+ Committer: sanjkumar <sanjeev@Sanjeevs-Mac.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 21 insertions(+), 6 deletions(-)
+Sanjeevs-Mac:jasmin2 sanjeev$ git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 619 bytes | 0 bytes/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+To git@github.com:sanjkumar/jasmin2.git
+   8e07922..7337ea3  master -> master
+Sanjeevs-Mac:jasmin2 sanjeev$ git push heroku master
+Fetching repository, done.
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 619 bytes | 0 bytes/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+
+-----> Removing .DS_Store files
+-----> PHP app detected
+-----> Bundling mcrypt version 2.5.8
+-----> Bundling Apache version 2.2.25
+-----> Bundling PHP version 5.3.27
+-----> Discovering process types
+       Procfile declares types -> (none)
+       Default types for PHP   -> web
+
+-----> Compressing... done, 22.3MB
+-----> Launching... done, v5
+       http://murmuring-depths-4689.herokuapp.com/ deployed to Heroku
+
+To git@heroku.com:murmuring-depths-4689.git
+   8e07922..7337ea3  master -> master
+Sanjeevs-Mac:jasmin2 sanjeev$ heroku apps:rename skelJS
+Renaming murmuring-depths-4689 to skelJS... failed
+ !    Name must start with a letter and can only contain lowercase letters, numbers, and dashes.
+Sanjeevs-Mac:jasmin2 sanjeev$ heroku apps:rename skeljs
+Renaming murmuring-depths-4689 to skeljs... done
+http://skeljs.herokuapp.com/ | git@heroku.com:skeljs.git
+Git remote heroku updated
+Sanjeevs-Mac:jasmin2 sanjeev$ git add .
+warning: You ran 'git add' with neither '-A (--all)' or '--ignore-removal',
+whose behaviour will change in Git 2.0 with respect to paths you removed.
+Paths like 'SpecRunner.html' that are
+removed from your working tree are ignored with this version of Git.
+
+* 'git add --ignore-removal <pathspec>', which is the current default,
+  ignores paths you removed from your working tree.
+
+* 'git add --all <pathspec>' will let you also record the removals.
+
+Run 'git status' to check the paths you removed from your working tree.
+
+Sanjeevs-Mac:jasmin2 sanjeev$ git add . --ignore-removal
+Sanjeevs-Mac:jasmin2 sanjeev$ git commit -m "css change"
+[master 8f6ad7f] css change
+ Committer: sanjkumar <sanjeev@Sanjeevs-Mac.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 1 deletion(-)
+Sanjeevs-Mac:jasmin2 sanjeev$ git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 402 bytes | 0 bytes/s, done.
+Total 4 (delta 3), reused 0 (delta 0)
+To git@github.com:sanjkumar/jasmin2.git
+   7337ea3..8f6ad7f  master -> master
+Sanjeevs-Mac:jasmin2 sanjeev$ git push heroku master
+Fetching repository, done.
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 402 bytes | 0 bytes/s, done.
+Total 4 (delta 3), reused 0 (delta 0)
+
+-----> Removing .DS_Store files
+-----> PHP app detected
+-----> Bundling mcrypt version 2.5.8
+-----> Bundling Apache version 2.2.25
+-----> Bundling PHP version 5.3.27
+-----> Discovering process types
+       Procfile declares types -> (none)
+       Default types for PHP   -> web
+
+-----> Compressing... done, 22.4MB
+-----> Launching... done, v6
+       http://skeljs.herokuapp.com/ deployed to Heroku
+
+To git@heroku.com:skeljs.git
+   7337ea3..8f6ad7f  master -> master
+Sanjeevs-Mac:jasmin2 sanjeev$ git add . -A
+Sanjeevs-Mac:jasmin2 sanjeev$ git commit -m "index.html"
+[master 6dad629] index.html
+ Committer: sanjkumar <sanjeev@Sanjeevs-Mac.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 9 files changed, 1058 deletions(-)
+ delete mode 100755 SpecRunner.html
+ delete mode 100755 css/main.css
+ delete mode 100755 css/normalize.css
+ delete mode 100644 index.html
+ delete mode 100644 js/config.js
+ delete mode 100755 js/plugins.js
+ delete mode 100755 js/vendor/jquery-1.10.2.min.js
+ delete mode 100755 js/vendor/modernizr-2.6.2.min.js
+ delete mode 100644 new.html
+Sanjeevs-Mac:jasmin2 sanjeev$ git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 365 bytes | 0 bytes/s, done.
+Total 4 (delta 3), reused 0 (delta 0)
+To git@github.com:sanjkumar/jasmin2.git
+   8f6ad7f..6dad629  master -> master
+Sanjeevs-Mac:jasmin2 sanjeev$ git push heroku master
+Fetching repository, done.
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 365 bytes | 0 bytes/s, done.
+Total 4 (delta 3), reused 0 (delta 0)
+
+-----> Removing .DS_Store files
+-----> PHP app detected
+-----> Bundling mcrypt version 2.5.8
+-----> Bundling Apache version 2.2.25
+-----> Bundling PHP version 5.3.27
+-----> Discovering process types
+       Procfile declares types -> (none)
+       Default types for PHP   -> web
+
+-----> Compressing... done, 22.3MB
+-----> Launching... done, v7
+       http://skeljs.herokuapp.com/ deployed to Heroku
+
+To git@heroku.com:skeljs.git
+   8f6ad7f..6dad629  master -> master
+Sanjeevs-Mac:jasmin2 sanjeev$ 
